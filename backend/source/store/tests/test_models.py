@@ -28,3 +28,8 @@ class StoreTest(TestCase):
         other_book.hsh = book.hsh
         with self.assertRaises(IntegrityError):
             other_book.save()   
+
+    def test_book_name_its_unique(self):
+        book = Store.objects.create(name='Book')
+        with self.assertRaises(IntegrityError):
+            other_book = Store.objects.create(name='Book')
