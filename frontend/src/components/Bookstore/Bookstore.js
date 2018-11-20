@@ -2,7 +2,6 @@ import React from 'react'
 
 import './Bookstore.css'
 
-
 const renderForm = () => {
     return (
         <div className="form">
@@ -12,7 +11,20 @@ const renderForm = () => {
     )
 }
 
-const renderTable = () => {
+const renderRows = (rows) => {
+    if (!rows) { return null }
+
+    return (
+        rows.map(r => (
+            <tr key={r.name}>
+                <td>{r.name}</td>
+                <td>{r.pages}</td>
+            </tr>
+            ))
+    )
+}
+
+const renderTable = (rows) => {
     return (
         <table>
             <thead>
@@ -21,6 +33,9 @@ const renderTable = () => {
                     <th>Pages</th>
                 </tr>
             </thead>
+            <tbody>
+                {renderRows(rows)}
+            </tbody>
         </table>
     )
 }
@@ -28,5 +43,5 @@ const renderTable = () => {
 export default props => 
     <div>
         {renderForm()}
-        {renderTable()}
+        {renderTable(props.books)}
     </div>

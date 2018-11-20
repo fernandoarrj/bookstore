@@ -1,5 +1,6 @@
 ## Backend
 backend/env
+backend/source/.coverage
 
 ## Frontend
 # dependencies
